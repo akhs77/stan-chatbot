@@ -110,6 +110,7 @@ def health():
     return "Chatbot server with memory is running."
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
-# Ensure the app runs with the correct host and port
+# Ensure the app runs with the correct host and portgit
