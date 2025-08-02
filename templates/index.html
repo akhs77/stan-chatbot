@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title> Stan - Your AI Buddy</title>
+<title>Stan - Your AI Buddy</title>
 <link rel="icon" type="image/png" href="/static/favicon.png">
 <style>
   body {
@@ -118,6 +118,7 @@
 const API_URL = "https://stan-chatbot.onrender.com/chat"; 
 const userId = "demoUser";
 
+// Event Listeners
 document.getElementById("sendBtn").addEventListener("click", sendMessage);
 document.getElementById("message").addEventListener("keypress", e => {
   if (e.key === "Enter") sendMessage();
@@ -126,7 +127,7 @@ document.getElementById("message").addEventListener("keypress", e => {
 function addMessage(text, sender) {
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("msg", sender);
-  msgDiv.innerHTML = `<div class="bubble">${text}</div>`;
+  msgDiv.innerText = text;
   document.getElementById("chatbox").appendChild(msgDiv);
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
@@ -134,8 +135,8 @@ function addMessage(text, sender) {
 function showTyping() {
   const typingDiv = document.createElement("div");
   typingDiv.id = "typing";
-  typingDiv.classList.add("msg", "bot");
-  typingDiv.innerHTML = `<div class="bubble typing">Stan is typing...</div>`;
+  typingDiv.classList.add("msg", "bot", "typing");
+  typingDiv.innerText = "Stan is typing...";
   document.getElementById("chatbox").appendChild(typingDiv);
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
