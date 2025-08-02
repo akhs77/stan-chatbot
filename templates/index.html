@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>💬 Stan - Your Chat Buddy</title>
+<title>🤖 Stan - Your AI Buddy</title>
+<link rel="icon" type="image/png" href="/static/favicon.png">
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,23 +41,34 @@
     background: #f7f7f7;
   }
   .msg {
+    display: flex;
+    align-items: flex-start;
+    margin: 8px 0;
+    animation: fadeIn 0.3s ease-in;
+    max-width: 90%;
+  }
+  .msg .bubble {
     padding: 10px 15px;
     border-radius: 20px;
-    margin: 8px 0;
-    max-width: 80%;
     line-height: 1.4;
-    animation: fadeIn 0.3s ease-in;
+    max-width: 80%;
   }
-  .user {
+  .msg.user .bubble {
     background: #2575fc;
     color: white;
     margin-left: auto;
     border-bottom-right-radius: 5px;
   }
-  .bot {
+  .msg.bot .bubble {
     background: #ececec;
     color: #333;
     border-bottom-left-radius: 5px;
+  }
+  .bot-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
   }
   #inputBox {
     display: flex;
@@ -92,6 +104,7 @@
     font-style: italic;
     color: #999;
     animation: blink 1s infinite;
+    margin-left: 38px;
   }
   @keyframes blink {
     0%, 100% { opacity: 1; }
@@ -122,7 +135,16 @@ document.getElementById("message").addEventListener("keypress", e => {
 function addMessage(text, sender) {
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("msg", sender);
-  msgDiv.innerText = text;
+
+  if (sender === "bot") {
+    msgDiv.innerHTML = `
+      <img src="/static/robot.png" class="bot-avatar">
+      <div class="bubble">${text}</div>
+    `;
+  } else {
+    msgDiv.innerHTML = `<div class="bubble">${text}</div>`;
+  }
+
   document.getElementById("chatbox").appendChild(msgDiv);
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
@@ -130,8 +152,10 @@ function addMessage(text, sender) {
 function showTyping() {
   const typingDiv = document.createElement("div");
   typingDiv.id = "typing";
-  typingDiv.classList.add("msg", "bot", "typing");
-  typingDiv.innerText = "Stan is typing...";
+  typingDiv.classList.add("msg", "bot");
+  typingDiv.innerHTML = `
+    <img src="/static/robot.png" class="bot-avatar">
+    <div class="bubble typing">Stan is typing...</div>`;
   document.getElementById("chatbox").appendChild(typingDiv);
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
