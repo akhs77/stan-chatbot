@@ -107,6 +107,10 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/')
+def health():
+    return "Chatbot server with memory is running."
+
 @app.route('/chat-ui')
 def chat_ui():
     return render_template('index.html')
