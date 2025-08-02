@@ -125,11 +125,23 @@
 const API_URL = "https://stan-chatbot.onrender.com/chat"; 
 const userId = "demoUser";
 
+// Initialize chat with welcome message
+document.addEventListener("DOMContentLoaded", function() {
+  showWelcomeMessage();
+});
+
 // Event Listeners
 document.getElementById("sendBtn").addEventListener("click", sendMessage);
 document.getElementById("message").addEventListener("keypress", e => {
   if (e.key === "Enter") sendMessage();
 });
+
+function showWelcomeMessage() {
+  // Add a small delay to make it feel more natural
+  setTimeout(() => {
+    addMessage("👋 Hi there! I'm Stan, your AI buddy. I'm here to chat, help answer questions, or just have a friendly conversation. What's on your mind today?", "bot");
+  }, 500);
+}
 
 function addMessage(text, sender) {
   const msgWrapper = document.createElement("div");
