@@ -6,6 +6,8 @@ from style import enhance_prompt
 from dotenv import load_dotenv
 from guard import needs_safe_response, get_safe_response
 from persona import get_persona_context
+# from flask import send_from_directory
+from flask import render_template
 from emotion import detect_emotion
 from memory import (
     get_user_profile, save_chat, get_chat_history,
@@ -105,9 +107,9 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/', methods=['GET'])
-def health():
-    return "Chatbot server with memory is running."
+@app.route('/chat-ui')
+def chat_ui():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
