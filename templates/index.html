@@ -40,27 +40,32 @@
     overflow-y: auto;
     background: #f7f7f7;
   }
+  .msg-wrapper {
+    width: 100%;
+    display: flex;
+    margin: 8px 0;
+  }
+  .msg-wrapper.user {
+    justify-content: flex-end;
+  }
+  .msg-wrapper.bot {
+    justify-content: flex-start;
+  }
   .msg {
     padding: 10px 15px;
     border-radius: 20px;
-    margin: 8px 0;
-    max-width: 80%;
     line-height: 1.4;
     animation: fadeIn 0.3s ease-in;
+    max-width: 80%;
+    word-wrap: break-word;
+    display: inline-block;
   }
-  .user {
-  background: #2575fc;
-  color: white;
-  padding: 10px 14px;
-  max-width: 90%;
-  border-bottom-right-radius: 5px;
-  border-radius: 20px;
-  margin: 8px 0 8px auto; /* stick to right */
-  display: block;
-  word-break: break-word;
-}
-
-  .bot {
+  .user .msg {
+    background: #2575fc;
+    color: white;
+    border-bottom-right-radius: 5px;
+  }
+  .bot .msg {
     background: #ececec;
     color: #333;
     border-bottom-left-radius: 5px;
@@ -127,19 +132,30 @@ document.getElementById("message").addEventListener("keypress", e => {
 });
 
 function addMessage(text, sender) {
+  const msgWrapper = document.createElement("div");
+  msgWrapper.classList.add("msg-wrapper", sender);
+  
   const msgDiv = document.createElement("div");
-  msgDiv.classList.add("msg", sender);
+  msgDiv.classList.add("msg");
   msgDiv.innerText = text;
-  document.getElementById("chatbox").appendChild(msgDiv);
+  
+  msgWrapper.appendChild(msgDiv);
+  document.getElementById("chatbox").appendChild(msgWrapper);
+  
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
 
 function showTyping() {
+  const msgWrapper = document.createElement("div");
+  msgWrapper.id = "typing";
+  msgWrapper.classList.add("msg-wrapper", "bot");
+  
   const typingDiv = document.createElement("div");
-  typingDiv.id = "typing";
-  typingDiv.classList.add("msg", "bot", "typing");
+  typingDiv.classList.add("msg", "typing");
   typingDiv.innerText = "Stan is typing...";
-  document.getElementById("chatbox").appendChild(typingDiv);
+  
+  msgWrapper.appendChild(typingDiv);
+  document.getElementById("chatbox").appendChild(msgWrapper);
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
 
