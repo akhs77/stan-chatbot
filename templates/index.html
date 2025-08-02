@@ -51,13 +51,14 @@
   .user {
   background: #2575fc;
   color: white;
-  margin-left: auto;
-  margin-right: 5px;      /* pushes bubble closer to right edge */
-  padding: 10px 14px;     /* balances inner text spacing */
-  max-width: 90%;         /* limits maximum width */
+  margin-left: auto; /* keeps the bubble on the right side */
+  margin-right: 5px;
+  padding: 10px 14px;
+  max-width: 90%;
   border-bottom-right-radius: 5px;
-  text-align: right;      /* aligns text to the right */
-  display: inline-block;  /* ensure it sizes to content */
+  display: inline-block; /* ensures the bubble size adapts to content */
+  text-align: right; /* aligns text inside to the right */
+  word-break: break-word; /* prevents overflow if text is long */
 }
   .bot {
     background: #ececec;
