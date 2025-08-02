@@ -6,3 +6,4 @@ google-generativeai
 pymongo[srv]
 dnspython
 requests
+flask-cors

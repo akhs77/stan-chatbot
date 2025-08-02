@@ -9,6 +9,7 @@ from persona import get_persona_context
 # from flask import send_from_directory
 from flask import render_template
 from emotion import detect_emotion
+from flask_cors import CORS
 from memory import (
     get_user_profile, save_chat, get_chat_history,
     handle_fact_contradiction, save_user_fact, get_user_facts
@@ -36,6 +37,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Initialize Flask
 app = Flask(__name__)
+CORS(app)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/chat', methods=['POST'])
