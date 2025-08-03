@@ -19,12 +19,16 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 
 
 ## 🏗️ Architecture
-![Architecture](static/Software Architecture.png)
+![Architecture](static/SoftwareArchitecture.png)
 
 - **Frontend:** `templates/index.html`  
 - **Backend:** Flask with modular structure (`app.py`, `memory.py`, etc.)  
 - **Database:** MongoDB Atlas (persistent user memory)  
 - **AI Model:** Google Gemini API (via `google-generativeai`)  
+
+
+Also available as an API
+![API](static/cmd.png)
 
 ## 📂 Project Structure
 
@@ -76,9 +80,6 @@ Access the Chat UI:
 http://127.0.0.1:5000/chat-ui
 ---
 
-
-Also available as an API
-![API](static/cmd.pngcmd.png)
 
 ---
 🌐 Live Deployment
