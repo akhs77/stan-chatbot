@@ -157,14 +157,16 @@
   @media (max-width: 480px) {
     body {
       padding: 0;
-      align-items: stretch;
+      align-items: flex-start;
     }
     
     .chat-container {
       height: 100vh;
+      height: 100dvh; /* Dynamic viewport height for mobile browsers */
       border-radius: 0;
       margin: 0;
       max-width: none;
+      position: relative;
     }
     
     .header {
@@ -174,6 +176,7 @@
     
     #chatbox {
       padding: 12px;
+      padding-bottom: 80px; /* Extra space for input area */
     }
     
     .msg {
@@ -184,6 +187,10 @@
     
     #inputBox {
       padding: 10px;
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
     }
     
     #message {
