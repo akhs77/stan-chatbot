@@ -5,7 +5,233 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stan - Your AI Buddy</title>
 <link rel="icon" type="image/png" href="/static/favicon.png">
-<link rel="stylesheet" href="/static/css/style.css">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .chat-container {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .header {
+    background: #2575fc;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  #chatbox {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .msg-wrapper {
+    width: 100%;
+    display: flex;
+    margin: 8px 0;
+  }
+  
+  .msg-wrapper.user {
+    justify-content: flex-end;
+  }
+  
+  .msg-wrapper.bot {
+    justify-content: flex-start;
+  }
+  
+  .msg {
+    padding: 12px 16px;
+    border-radius: 20px;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-in;
+    max-width: 85%;
+    word-wrap: break-word;
+    display: inline-block;
+    font-size: 14px;
+  }
+  
+  .user .msg {
+    background: #2575fc;
+    color: white;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .bot .msg {
+    background: #ececec;
+    color: #333;
+    border-bottom-left-radius: 5px;
+  }
+  
+  #inputBox {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 12px;
+    background: #fff;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+  
+  #message {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 16px;
+    background: #f9f9f9;
+    min-height: 44px;
+  }
+  
+  #message:focus {
+    border-color: #2575fc;
+    background: white;
+  }
+  
+  #sendBtn {
+    background: #2575fc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+  
+  #sendBtn:hover {
+    background: #6a11cb;
+  }
+  
+  #sendBtn:active {
+    transform: scale(0.98);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .typing {
+    font-style: italic;
+    color: #999;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 480px) {
+    body {
+      padding: 0;
+      align-items: stretch;
+    }
+    
+    .chat-container {
+      height: 100vh;
+      border-radius: 0;
+      margin: 0;
+      max-width: none;
+    }
+    
+    .header {
+      font-size: 16px;
+      padding: 12px;
+    }
+    
+    #chatbox {
+      padding: 12px;
+    }
+    
+    .msg {
+      font-size: 14px;
+      padding: 10px 14px;
+      max-width: 90%;
+    }
+    
+    #inputBox {
+      padding: 10px;
+    }
+    
+    #message {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    #sendBtn {
+      padding: 12px 16px;
+      min-width: 60px;
+    }
+  }
+
+  /* Very small screens */
+  @media (max-width: 320px) {
+    .msg {
+      max-width: 95%;
+      font-size: 13px;
+    }
+    
+    #sendBtn {
+      padding: 12px;
+      min-width: 50px;
+      font-size: 12px;
+    }
+  }
+
+  /* Landscape mobile */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .chat-container {
+      height: 100vh;
+    }
+    
+    .header {
+      padding: 8px 15px;
+    }
+    
+    #inputBox {
+      padding: 8px;
+    }
+  }
+
+  /* Safe area support for newer iPhones */
+  @supports (padding: max(0px)) {
+    .chat-container {
+      padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+  }
+</style>
 </head>
 <body>
 <div class="chat-container">
