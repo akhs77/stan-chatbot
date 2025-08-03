@@ -38,9 +38,20 @@ Stan's chat interface works beautifully on both desktop and mobile devices.
 ---
 
 ## 📂 Project Structure
-
-<pre> ```text stan-chatbot/ ├── app.py # Main Flask server ├── memory.py # Memory storage and contradiction handling ├── emotion.py # Emotion detection logic ├── guard.py # Hallucination guard ├── persona.py # Persona rules ├── style.py # Style enhancer ├── requirements.txt# Dependencies ├── .gitignore # Ignored files ├── .env # API keys ├── templates/ │ └── index.html # Chat UI └── static/ └── cmd.png # Screenshot ``` </pre>
-
+stan-chatbot/
+├── app.py                 # Main Flask server
+├── memory.py              # Memory storage and contradiction handling
+├── emotion.py             # Emotion detection logic
+├── guard.py               # Hallucination guard
+├── persona.py             # Persona rules
+├── style.py               # Style enhancer
+├── requirements.txt       # Dependencies
+├── .gitignore             # Ignored files
+├── .env                   # API keys
+├── templates/
+│   └── index.html         # Chat UI
+└── static/
+└── cmd.png            # Screenshot
 ---
 
 ## 🛠️ Setup Instructions
