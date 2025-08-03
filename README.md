@@ -19,7 +19,7 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 
 
 ## 🏗️ Architecture
-![Architecture](static/architecture.png)
+![Architecture](static/Software Architecture.png)
 
 - **Frontend:** `templates/index.html`  
 - **Backend:** Flask with modular structure (`app.py`, `memory.py`, etc.)  
@@ -78,7 +78,7 @@ http://127.0.0.1:5000/chat-ui
 
 
 Also available as an API
-![API](cmd.png)
+![API](static/cmd.pngcmd.png)
 
 ---
 🌐 Live Deployment
