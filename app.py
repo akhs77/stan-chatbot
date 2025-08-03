@@ -1,7 +1,7 @@
 import os
 import re
 import google.generativeai as genai
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from style import enhance_prompt
 from dotenv import load_dotenv
 from guard import needs_safe_response, get_safe_response
@@ -32,9 +32,28 @@ def extract_fact(user_message):
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-app = Flask(__name__)
+# ✅ Configure Flask with static folder
+app = Flask(__name__, 
+           static_folder='static',  # Explicitly set static folder
+           static_url_path='/static')  # URL path for static files
+
 CORS(app)
 model = genai.GenerativeModel('gemini-1.5-flash')
+
+# ✅ Optional: Custom static file handler for better control
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    """Serve static files with proper headers"""
+    return send_from_directory(app.static_folder, filename)
+
+# ✅ Add cache control for better performance
+@app.after_request
+def after_request(response):
+    """Add cache headers for static files"""
+    if request.endpoint == 'static' or request.endpoint == 'serve_static':
+        # Cache static files for 1 hour
+        response.headers['Cache-Control'] = 'public, max-age=3600'
+    return response
 
 # ----------- CHAT ENDPOINT -----------
 @app.route('/chat', methods=['POST'])
@@ -120,7 +139,28 @@ def health():
 def chat_ui():
     return render_template('index.html')
 
+# ✅ Optional: Add a redirect from root to chat UI for better UX
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+# ✅ Error handlers for better user experience
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({"error": "Endpoint not found"}), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({"error": "Internal server error"}), 500
+
 # ----------- MAIN -----------
 if __name__ == '__main__':
+    # ✅ Create required directories if they don't exist
+    os.makedirs('static/css', exist_ok=True)
+    os.makedirs('templates', exist_ok=True)
+    
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # ✅ Enable debug mode for development (disable in production)
+    debug_mode = os.environ.get('FLASK_ENV') == 'development'
+    
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
