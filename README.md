@@ -125,8 +125,8 @@ json
 ---
 
 📹 Demo
-🎥 Demo Video:
-https://drive.google.com/file/d/1uJvreVx6OEWdVcYLOqVBQwkPO9WMJ9cC/view?usp=sharing
+🎥 [Demo Video](https://drive.google.com/file/d/1uJvreVx6OEWdVcYLOqVBQwkPO9WMJ9cC/view?usp=sharing)
+
 
 ---
 👨‍💻 Author
