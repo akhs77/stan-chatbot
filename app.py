@@ -91,6 +91,12 @@ def chat():
     # Build final prompt
     base_prompt = f"{persona_context}\nThe user seems {emotion}.\n{context_text}\nUser: {user_message}\nBot:"
     final_prompt = enhance_prompt(base_prompt)
+    # Debug print for Render logs
+    print("DEBUG FINAL PROMPT:", final_prompt)
+
+# Ensure it's not empty
+    if not final_prompt.strip():
+        final_prompt = user_message
     
     try:
         response = model.generate_content(final_prompt)

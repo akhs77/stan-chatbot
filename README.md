@@ -1,11 +1,138 @@
-# STAN Chatbot (Phase 1 - Basic Setup)
+# 🤖 STAN Chatbot – Your AI Buddy 
 
-## Overview
-This is the initial backend for the STAN Internship Challenge chatbot.  
-Currently, it supports a single `/chat` endpoint that echoes a basic bot response.
+STAN is a **human-like conversational chatbot** built as part of the **STAN Internship Challenge**.  
+It goes beyond simple Q&A by featuring **persistent memory**, **emotional awareness**, **persona consistency**, and an **interactive chat UI**.
 
-## Setup Instructions
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+---
+
+## 🚀 Features
+- ✅ **Natural, human-like responses**
+- ✅ **Emotion detection & empathetic tone**
+- ✅ **Persistent memory** (remembers user facts & chat history)
+- ✅ **Contradiction handling** (asks when facts conflict)
+- ✅ **Persona consistency** (maintains a friendly virtual friend persona)
+- ✅ **Hallucination guard** (safe fallback for unknown info)
+- ✅ **Interactive Web UI** with typing animation
+- ✅ **Deployed Live** on Render
+
+---
+
+
+## 🏗️ Architecture ──▶
+
+
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend UI   │ ──>│  Flask Backend  │ ──>│  Gemini API     │
+│   (HTML/JS)     │    │   (Python)      │    │  (LLM Core)     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                              │
+                              v
+                       ┌─────────────────┐
+                       │ MongoDB Database│
+                       │  (Memory Store) │
+                       └─────────────────┘
+
+- **Frontend:** `templates/index.html`  
+- **Backend:** Flask with modular structure (`app.py`, `memory.py`, etc.)  
+- **Database:** MongoDB Atlas (persistent user memory)  
+- **AI Model:** Google Gemini API (via `google-generativeai`)  
+
+## 📂 Project Structure
+
+stan-chatbot/
+│── app.py # Main Flask server
+│── memory.py # Memory storage and contradiction handling
+│── emotion.py # Emotion detection logic
+│── guard.py # Hallucination guard
+│── persona.py # Persona rules
+│── style.py # Style enhancer
+│── requirements.txt # Dependencies
+│── .gitignore # Ignored files
+│── .env # API keys
+└── templates/
+└── index.html #Chat UI
+
+---
+
+## 🛠️ Setup Instructions
+ 
+```bash
+1️⃣ Clone the repository
+git clone https://github.com/Akhs77/stan-chatbot.git
+cd stan-chatbot
+
+---
+2️⃣ Create and activate virtual environment
+python -m venv env
+source env/bin/activate   # (Linux/Mac)
+env\Scripts\activate      # (Windows)
+---
+
+3️⃣ Install dependencies
+pip install -r requirements.txt
+---
+
+4️⃣ Configure Environment Variables
+Create a .env file:
+GOOGLE_API_KEY=your_google_api_key
+MONGO_URI=your_mongodb_uri
+---
+
+▶️ Running Locally
+python app.py
+
+The server will start at:
+http://127.0.0.1:5000
+Access the Chat UI:
+http://127.0.0.1:5000/chat-ui
+---
+
+🌐 Live Deployment
+
+Live Chat UI: https://stan-chatbot.onrender.com/chat-ui
+
+---
+
+📡 API Usage Example
+Endpoint:
+
+POST /chat
+
+Request:
+json
+{
+  "user_id": "1",
+  "message": "Hello Stan!"
+}
+Response:
+json
+
+{
+  "user_id": "1",
+  "emotion_detected": "neutral",
+  "response": "Hey there! How can I help you today?",
+  "context_used": []
+}
+---
+
+🎯 Challenge Requirements – Compliance
+
+✅ Flask modular backend
+✅ Google Gemini API integration
+✅ MongoDB persistent memory
+✅ Emotion detection & tone adaptation
+✅ Persona stability & contradiction handling
+✅ Hallucination guard
+✅ Interactive chat UI
+✅ Live deployment on Render
+
+---
+
+📹 Demo
+🎥 Demo Video: 
+
+---
+👨‍💻 Author
+Akhila K C
+📧 [akhilakc4747@gmail.com](mailto:yourname@example.com)
+🔗 https://github.com/akhs77

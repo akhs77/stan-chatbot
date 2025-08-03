@@ -22,4 +22,4 @@ def enhance_prompt(base_prompt: str) -> str:
         "Use emojis sparingly and only when they feel natural to the conversation context.",
         "Keep responses fresh and avoid repetitive endings or phrases."
     ]
-    
+    return f"{base_prompt}\nInstructions: {random.choice(diversity_hints)}"
