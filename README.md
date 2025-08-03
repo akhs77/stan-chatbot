@@ -18,19 +18,8 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 ---
 
 
-## 🏗️ Architecture ──▶
-
-
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend UI   │ ──>│  Flask Backend  │ ──>│  Gemini API     │
-│   (HTML/JS)     │    │   (Python)      │    │  (LLM Core)     │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                              │
-                              v
-                       ┌─────────────────┐
-                       │ MongoDB Database│
-                       │  (Memory Store) │
-                       └─────────────────┘
+## 🏗️ Architecture
+![Architecture](static/architecture.png)
 
 - **Frontend:** `templates/index.html`  
 - **Backend:** Flask with modular structure (`app.py`, `memory.py`, etc.)  
@@ -129,10 +118,10 @@ json
 ---
 
 📹 Demo
-🎥 Demo Video: 
+🎥 Demo Video: https://drive.google.com/file/d/1uJvreVx6OEWdVcYLOqVBQwkPO9WMJ9cC/view?usp=sharing
 
 ---
 👨‍💻 Author
 Akhila K C
-📧 [akhilakc4747@gmail.com](mailto:yourname@example.com)
+📧 akhilakc4747@gmail.com
 🔗 https://github.com/akhs77
