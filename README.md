@@ -76,6 +76,11 @@ Access the Chat UI:
 http://127.0.0.1:5000/chat-ui
 ---
 
+
+Also available as an API
+![API](cmd.png)
+
+---
 🌐 Live Deployment
 
 Live Chat UI: https://stan-chatbot.onrender.com/chat-ui
