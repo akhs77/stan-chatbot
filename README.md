@@ -25,30 +25,21 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 - **Backend:** Flask with modular structure (`app.py`, `memory.py`, etc.)  
 - **Database:** MongoDB Atlas (persistent user memory)  
 - **AI Model:** Google Gemini API (via `google-generativeai`)  
-
+---
 
 Also available as an API
 ![API](static/cmd.png)
-
+ ---
 
 ## 📱 Mobile Responsive Design
 Stan's chat interface works beautifully on both desktop and mobile devices.
 
 <img src="static/mobile-view.jpg" alt="Mobile View" width="300">
+---
+
 ## 📂 Project Structure
 
-stan-chatbot/
-│── app.py # Main Flask server
-│── memory.py # Memory storage and contradiction handling
-│── emotion.py # Emotion detection logic
-│── guard.py # Hallucination guard
-│── persona.py # Persona rules
-│── style.py # Style enhancer
-│── requirements.txt # Dependencies
-│── .gitignore # Ignored files
-│── .env # API keys
-└── templates/
-└── index.html #Chat UI
+<pre> ```text stan-chatbot/ ├── app.py # Main Flask server ├── memory.py # Memory storage and contradiction handling ├── emotion.py # Emotion detection logic ├── guard.py # Hallucination guard ├── persona.py # Persona rules ├── style.py # Style enhancer ├── requirements.txt# Dependencies ├── .gitignore # Ignored files ├── .env # API keys ├── templates/ │ └── index.html # Chat UI └── static/ └── cmd.png # Screenshot ``` </pre>
 
 ---
 
