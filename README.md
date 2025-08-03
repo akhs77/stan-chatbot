@@ -12,7 +12,7 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 - ✅ **Contradiction handling** (asks when facts conflict)
 - ✅ **Persona consistency** (maintains a friendly virtual friend persona)
 - ✅ **Hallucination guard** (safe fallback for unknown info)
-- ✅ **Interactive Web UI** with typing animation
+- ✅ **Interactive Chat UI** (💻 Desktop + 📱 Mobile Responsive, with typing animation)
 - ✅ **Deployed Live** on Render
 
 ---
@@ -29,6 +29,12 @@ It goes beyond simple Q&A by featuring **persistent memory**, **emotional awaren
 
 Also available as an API
 ![API](static/cmd.png)
+
+
+## 📱 Mobile Responsive Design
+Stan's chat interface works beautifully on both desktop and mobile devices.
+
+![Mobile View](static/mobile-view.jpg)
 
 ## 📂 Project Structure
 
