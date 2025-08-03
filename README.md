@@ -34,8 +34,7 @@ Also available as an API
 ## 📱 Mobile Responsive Design
 Stan's chat interface works beautifully on both desktop and mobile devices.
 
-![Mobile View](static/mobile-view.jpg)
-
+<img src="static/mobile-view.jpg" alt="Mobile View" width="300">
 ## 📂 Project Structure
 
 stan-chatbot/
