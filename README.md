@@ -84,7 +84,8 @@ http://127.0.0.1:5000/chat-ui
 ---
 🌐 Live Deployment
 
-Live Chat UI: https://stan-chatbot.onrender.com/chat-ui
+Live Chat UI:
+https://stan-chatbot.onrender.com/chat-ui
 
 ---
 
@@ -124,7 +125,8 @@ json
 ---
 
 📹 Demo
-🎥 Demo Video: https://drive.google.com/file/d/1uJvreVx6OEWdVcYLOqVBQwkPO9WMJ9cC/view?usp=sharing
+🎥 Demo Video:
+https://drive.google.com/file/d/1uJvreVx6OEWdVcYLOqVBQwkPO9WMJ9cC/view?usp=sharing
 
 ---
 👨‍💻 Author
